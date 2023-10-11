@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Timesheets.App.Data;
 
 var db = new TimesheetsDbContext();
+//Basic queries
 IQueryable<Staff> allStaff = db.Staff;
 foreach (var staff in allStaff)
 {
@@ -31,7 +32,7 @@ var time = db.Timesheets
 Console.WriteLine($"{time.Id} {time.LocationName} {time.cleintName}");
 
 // use include to load related entities
-var time2 =  db.Timesheets.Include(m => m.Staff).Skip(4).First();
+var time2 =  db.Timesheets.Include(m => m.Staff).Skip(3).First();
 Staff stf = time2.Staff;
 Console.WriteLine(stf.SurName);
 
